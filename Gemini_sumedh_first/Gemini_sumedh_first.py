@@ -1,37 +1,17 @@
-"""Welcome to Reflex! This file outlines the steps to create a basic app."""
-
 import reflex as rx
-
-from rxconfig import config
-
-
-from Gemini_sumedh_first.state import State
-from Gemini_sumedh_first.components import counter_component
+from .components import calculator_ui
 
 def index() -> rx.Component:
-    # Welcome Page (Index)
-    return rx.container(
-        rx.color_mode.button(position="top-right"),
+    return rx.center(
         rx.vstack(
-            rx.heading("Welcome to Reflex!", size="9"),
-            rx.text(
-                "Get started by editing ",
-                rx.code(f"{config.app_name}/{config.app_name}.py"),
-                size="5",
-            ),
-            counter_component(),
-            rx.link(
-                rx.button("Check out our docs!"),
-                href="https://reflex.dev/docs/getting-started/introduction/",
-                is_external=True,
-            ),
+            rx.heading("Reflex Calculator", size="9"),
+            calculator_ui(),
             spacing="5",
-            justify="center",
+            align="center",
             min_height="85vh",
         ),
-        rx.logo(),
+        padding_top="50px",
     )
-
 
 app = rx.App()
 app.add_page(index)
